@@ -16,12 +16,13 @@ const handleLoginClick = () => {
     <h1 class="font-bold text-center my-20 text-4xl">
       Welcome to FAP Attendance Status
     </h1>
-    <form class="mt-40 flex flex-col justify-center">
+    <form class="mt-40 flex flex-col justify-center" autocomplete="on">
       <input
         class="text-center border rounded focus:border-2 w-96 mx-auto py-2 mb-10 focus:outline-none"
         type="text"
         placeholder="Your SessionID..."
         v-model="sid"
+        autocomplete="on"
       />
       <button
         class="bg-sky-500 font-bold text-white w-fit px-4 py-2 rounded-md mx-auto"

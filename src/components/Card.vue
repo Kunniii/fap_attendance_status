@@ -16,7 +16,7 @@ function analyzeReport(report) {
       absents++;
     }
   }
-  let absentPercent = Math.round((absents / total) * 100);
+  let absentPercent = Math.ceil((absents / total) * 100);
   return { absentPercent, availableAbsents, absents };
 }
 
@@ -30,7 +30,7 @@ function colorBasedOnPercent(percent) {
   if (percent <= 15) {
     return "hover:bg-orange-500  hover:text-white hover:border-orange-600 border-orange-500";
   }
-  if (percent <= 20) {
+  if (percent < 20) {
     return "hover:bg-red-500  hover:text-white hover:border-red-600 border-red-500";
   }
   return "hover:bg-black  hover:text-white border-black";
