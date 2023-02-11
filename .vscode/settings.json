@@ -1,6 +1,12 @@
 {
-    "editor.formatOnSave": true,
-    "prettier.enable": true,
-    "prettier.semi": true,
-    "prettier.singleQuote": false
+  "editor.formatOnSave": true,
+  "prettier.enable": true,
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "tailwind-class-sorter.classRegex": {
+    "rescript": [
+      "className\\w*?=\\w*(\"[\\s\\S]+?\")|className\\w*?=\\w*?\\{([\\s\\S]+?)\\}",
+      "\"(.+?)\""
+    ]
+  }
 }

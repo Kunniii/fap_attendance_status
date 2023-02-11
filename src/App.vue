@@ -1,12 +1,13 @@
 <script setup>
-import Dashboard from "./views/dashboard.vue";
-import Login from "./views/login.vue";
+import Dashboard from "./views/Dashboard.vue";
+import Login from "./views/Login.vue";
 
 const sid = localStorage.getItem("sid");
 </script>
 
 <template>
-  <div class="w-96 mx-auto">
-    <Login />
+  <div class="mx-auto">
+    <Login v-if="!sid" />
+    <Dashboard v-else />
   </div>
 </template>
