@@ -5,6 +5,7 @@ import { ref } from "vue";
 import RollingSVG from "../assets/rolling.svg";
 
 let apiData = ref(null);
+let isLoading = ref(true);
 let sid = localStorage.getItem("sid");
 let savedData = JSON.parse(localStorage.getItem("savedData"));
 const revalidateTime = 3600000; //ms (1 hour)
@@ -35,7 +36,7 @@ const makeRequest = () => {
     .then((res) => {
       apiData.value = res.data.data;
       localStorage.setItem("savedData", JSON.stringify({ data: res.data.data, time: Date.now() }));
-      window.location.reload();
+      isLoading.value = false;
     })
     .catch((err) => {
       alert(err.message);
@@ -47,6 +48,7 @@ if (savedData && savedData.data) {
     makeRequest();
   } else {
     apiData = savedData.data;
+    isLoading.value = false;
   }
 } else {
   makeRequest();
@@ -67,7 +69,7 @@ if (savedData && savedData.data) {
     reload
   </button>
   <div
-    v-if="!(savedData && savedData.data)"
+    v-if="isLoading"
     class="flex"
   >
     <div class="mx-auto pt-32">

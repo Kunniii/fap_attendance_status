@@ -7,8 +7,8 @@ let report;
 
 function analyzeReport(report) {
   let total = report.length;
-  let avaiablePercent = 0.2;
-  let availableAbsents = Math.floor(avaiablePercent * total);
+  let availablePercent = 0.2;
+  let availableAbsents = Math.floor(availablePercent * total);
 
   let absents = 0;
   for (let slot of report) {
@@ -43,6 +43,13 @@ report = analyzeReport(props.course.reports);
   <div
     class="border-2 py-9 px-3 duration-200 ease-in-out font-bold rounded-xl"
     :class="colorBasedOnPercent(report.absentPercent)"
+    :title="
+      'You have ' +
+      report.availableAbsents +
+      ' absent slots. You\'ve absent for ' +
+      report.absents +
+      ' slot(s) so far!'
+    "
   >
     <h1>{{ course.name }}</h1>
     <hr class="my-4" />
