@@ -41,7 +41,7 @@ report = analyzeReport(props.course.reports);
 
 <template>
   <div
-    class="border-2 my-10 py-5 px-3 duration-200 ease-in-out font-bold rounded-xl"
+    class="border-2 py-9 px-3 duration-200 ease-in-out font-bold rounded-xl"
     :class="colorBasedOnPercent(report.absentPercent)"
   >
     <h1>{{ course.name }}</h1>
