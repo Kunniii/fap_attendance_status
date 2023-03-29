@@ -18,7 +18,8 @@ const logout = () => {
 
 const forceReload = () => {
   localStorage.removeItem("savedData");
-  window.location.reload();
+  isLoading.value = true;
+  makeRequest();
 };
 
 const makeRequest = () => {
