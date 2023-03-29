@@ -12,7 +12,7 @@ function analyzeReport(report) {
 
   let absents = 0;
   for (let slot of report) {
-    if (slot["Attendance status"] == "Absent") {
+    if (slot["Attedance status"] == "Absent") {
       absents++;
     }
   }
@@ -28,7 +28,7 @@ function colorBasedOnPercent(percent) {
     return "bg-yellow-500 hover:scale-110 text-white border-yellow-600";
   }
   if (percent <= 15) {
-    return "bg-orange-500 hover:scale-110 text-white border-orange-600";
+    return "bg-amber-500 hover:scale-110 text-white border-amber-600";
   }
   if (percent < 20) {
     return "bg-red-500 hover:scale-110 text-white border-red-600";
