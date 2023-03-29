@@ -26,7 +26,7 @@ axios
 </script>
 
 <template>
-  <div class="w-96 mx-auto">
+  <div class="w-1/2 mx-auto">
     <button
       class="fixed text-sm top-1 left-1 border-4 border-red-500 font-bold text-white rounded-lg"
       @click="logout"
@@ -37,7 +37,7 @@ axios
     <h1 class="text-center font-bold pt-24 text-3xl">
       {{ apiData?.terms.current }}
     </h1>
-    <div class="grid grid-cols-1 pt-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-9 pt-20">
       <Card
         v-for="course in apiData?.reports"
         :key="course.name"

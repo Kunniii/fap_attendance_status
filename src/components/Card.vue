@@ -12,7 +12,7 @@ function analyzeReport(report) {
 
   let absents = 0;
   for (let slot of report) {
-    if (slot["Attedance status"] == "Absent") {
+    if (slot["Attendance status"] == "Absent") {
       absents++;
     }
   }
@@ -22,18 +22,18 @@ function analyzeReport(report) {
 
 function colorBasedOnPercent(percent) {
   if (percent <= 5) {
-    return "hover:bg-green-500  hover:text-white hover:border-green-600 border-green-500";
+    return "bg-green-500 hover:scale-110 text-white border-green-600";
   }
   if (percent <= 10) {
-    return "hover:bg-yellow-500  hover:text-white hover:border-yellow-600 border-yellow-500";
+    return "bg-yellow-500 hover:scale-110 text-white border-yellow-600";
   }
   if (percent <= 15) {
-    return "hover:bg-orange-500  hover:text-white hover:border-orange-600 border-orange-500";
+    return "bg-orange-500 hover:scale-110 text-white border-orange-600";
   }
   if (percent < 20) {
-    return "hover:bg-red-500  hover:text-white hover:border-red-600 border-red-500";
+    return "bg-red-500 hover:scale-110 text-white border-red-600";
   }
-  return "hover:bg-black  hover:text-white border-black";
+  return "bg-black hover:scale-110 text-white";
 }
 
 report = analyzeReport(props.course.reports);
@@ -41,7 +41,7 @@ report = analyzeReport(props.course.reports);
 
 <template>
   <div
-    class="border-2 my-10 py-5 px-3 duration-200 ease-in-out"
+    class="border-2 my-10 py-5 px-3 duration-200 ease-in-out font-bold rounded-xl"
     :class="colorBasedOnPercent(report.absentPercent)"
   >
     <h1>{{ course.name }}</h1>
