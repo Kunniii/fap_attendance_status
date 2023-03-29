@@ -49,7 +49,7 @@ if (savedData && savedData.data) {
 </script>
 
 <template>
-  <div class="w-1/2 mx-auto">
+  <div class="w-1/2 md:w-3/4 lg:w-1/2 mx-auto">
     <button
       class="fixed text-sm top-1 left-1 border-4 border-red-500 font-bold text-white rounded-lg"
       @click="logout"
