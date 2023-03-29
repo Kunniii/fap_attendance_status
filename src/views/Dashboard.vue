@@ -2,8 +2,10 @@
 import Card from "../components/Card.vue";
 import axios from "axios";
 import { ref } from "vue";
+import RollingSVG from "../assets/rolling.svg";
 
 let apiData = ref(null);
+let loading = true;
 let sid = localStorage.getItem("sid");
 let savedData = JSON.parse(localStorage.getItem("savedData"));
 const revalidateTime = 3600000; //ms (1 hour)
@@ -34,6 +36,11 @@ const makeRequest = () => {
     .then((res) => {
       apiData.value = res.data.data;
       localStorage.setItem("savedData", JSON.stringify({ data: res.data.data, time: Date.now() }));
+      loading = false;
+    })
+    .catch((err) => {
+      alert(err.message);
+      loading = true;
     });
 };
 
@@ -42,6 +49,7 @@ if (savedData && savedData.data) {
     makeRequest();
   } else {
     apiData = savedData.data;
+    loading = false;
   }
 } else {
   makeRequest();
@@ -49,20 +57,34 @@ if (savedData && savedData.data) {
 </script>
 
 <template>
-  <div class="w-1/2 md:w-3/4 lg:w-1/2 mx-auto">
-    <button
-      class="fixed text-sm top-1 left-1 border-4 border-red-500 font-bold text-white rounded-lg"
-      @click="logout"
-    >
-      ❌
-    </button>
-    <button
-      class="fixed text-sm top-1 right-1 border-4 border-cyan-500 font-bold bg-cyan-500 text-white rounded-lg uppercase"
-      @click="forceReload"
-    >
-      force reload
-    </button>
+  <button
+    class="fixed text-sm top-3 left-3 border-4 px-1 border-red-500 font-bold text-white rounded-lg"
+    @click="logout"
+  >
+    ❌
+  </button>
+  <button
+    class="fixed top-3 right-3 border-4 px-2 border-cyan-500 text-cyan-500 rounded-lg uppercase"
+    @click="forceReload"
+  >
+    reload
+  </button>
+  <div
+    v-if="loading"
+    class="flex"
+  >
+    <div class="mx-auto pt-32">
+      <img
+        :src="RollingSVG"
+        class="animate-spin mx-auto my-auto text-xl w-36"
+      />
+    </div>
+  </div>
 
+  <div
+    v-else
+    class="w-1/2 md:w-3/4 lg:w-1/2 mx-auto"
+  >
     <h1 class="text-center font-bold pt-24 text-3xl">
       {{ apiData?.terms.current }}
     </h1>
